@@ -819,7 +819,7 @@ function loadStManage(){
     tbody.innerHTML='';var i=1;
     snap.forEach(function(d){
       if(d.data().eliminado)return;
-      tbody.innerHTML+='<tr><td>'+i+'</td><td>'+d.data().nombre+'</td><td><code style="background:rgba(255,255,255,.08);padding:.2rem .4rem;border-radius:4px">'+d.data().codigo+'</code></td><td><button class="btn-s" style="font-size:.72rem;padding:.25rem .6rem" onclick="delStudent(''+d.id+'')">Eliminar</button></td></tr>';
+      tbody.innerHTML+='<tr><td>'+i+'</td><td>'+d.data().nombre+'</td><td><code style="background:rgba(255,255,255,.08);padding:.2rem .4rem;border-radius:4px">'+d.data().codigo+'</code></td><td><button class="btn-s" style="font-size:.72rem;padding:.25rem .6rem" data-sid="'+d.id+'" onclick="delStudent(this.dataset.sid)">Eliminar</button></td></tr>';
       i++;
     });
     if(!tbody.innerHTML)tbody.innerHTML='<tr><td colspan="4" style="text-align:center;padding:1rem;color:rgba(255,255,255,.4)">No hay estudiantes aún.</td></tr>';
