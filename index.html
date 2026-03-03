@@ -450,13 +450,6 @@ function doLoginSt(){
   var id=document.getElementById('st-name').value,code=document.getElementById('st-code').value.trim(),err=document.getElementById('st-err');
   err.classList.remove('show');
   if(!id||!code){err.textContent='⚠️ Selecciona tu nombre e ingresa tu código.';err.classList.add('show');return;}
-  // Demo mode
-  if(id.startsWith('demo')){
-    if(code!=='1234'){err.textContent='⚠️ Código incorrecto. (Demo: usa 1234)';err.classList.add('show');return;}
-    var names={demo1:'Ana García',demo2:'Carlos Pérez',demo3:'María Torres'};
-    ST={id:id,nombre:names[id]||id,res:{},demo:true};
-    enterDash();return;
-  }
   // Firebase mode
   db.collection('estudiantes').doc(id).get().then(function(snap){
     if(!snap.exists||snap.data().codigo!==code){err.textContent='⚠️ Código incorrecto.';err.classList.add('show');return;}
@@ -477,7 +470,7 @@ function doLoginTc(){
 function logoutTc(){document.getElementById('tc-code').value='';go('splash');}
 function loadStSelect(){
   var sel=document.getElementById('st-name');
-  sel.innerHTML='<option value="">— Selecciona tu nombre —</option><option value="demo1">Ana García (demo)</option><option value="demo2">Carlos Pérez (demo)</option><option value="demo3">María Torres (demo)</option>';
+  sel.innerHTML='<option value="">— Selecciona tu nombre —</option>';
   if(!FB)return;
   db.collection('estudiantes').get().then(function(snap){
     snap.forEach(function(d){
@@ -819,7 +812,7 @@ function loadStManage(){
     tbody.innerHTML='';var i=1;
     snap.forEach(function(d){
       if(d.data().eliminado)return;
-      tbody.innerHTML+='<tr><td>'+i+'</td><td>'+d.data().nombre+'</td><td><code style="background:rgba(255,255,255,.08);padding:.2rem .4rem;border-radius:4px">'+d.data().codigo+'</code></td><td><button class="btn-s" style="font-size:.72rem;padding:.25rem .6rem" data-sid="'+d.id+'" onclick="delStudent(this.dataset.sid)">Eliminar</button></td></tr>';
+      tbody.innerHTML+='<tr><td>'+i+'</td><td>'+d.data().nombre+'</td><td><code style="background:rgba(255,255,255,.08);padding:.2rem .4rem;border-radius:4px">'+d.data().codigo+'</code></td><td><button class="btn-s" style="font-size:.72rem;padding:.25rem .6rem" onclick="delStudent(''+d.id+'')">Eliminar</button></td></tr>';
       i++;
     });
     if(!tbody.innerHTML)tbody.innerHTML='<tr><td colspan="4" style="text-align:center;padding:1rem;color:rgba(255,255,255,.4)">No hay estudiantes aún.</td></tr>';
