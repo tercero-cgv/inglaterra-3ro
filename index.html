@@ -178,48 +178,48 @@ var FB=true;
 <div class="bg"></div>
 
 <div id="splash" class="screen active">
-  <span class="crown">&#128081;</span>
+  <span class="crown">👑</span>
   <div>
     <div class="app-title">Inglaterra</div>
-    <div class="app-title" style="font-size:clamp(1rem,2.2vw,1.5rem);margin-top:.1rem">Hogar de Momentos Incre&#237;bles</div>
+    <div class="app-title" style="font-size:clamp(1rem,2.2vw,1.5rem);margin-top:.1rem">Hogar de Momentos Increíbles</div>
     <div class="app-sub">Unidad 3.4 &middot; Tercer Grado &middot; Maestro Lozada</div>
   </div>
   <div class="role-row">
-    <div class="role-card" onclick="go('login-st')"><span class="ic">&#127992;</span><div class="lbl">Soy Estudiante</div><div class="hint">Entrar con mi nombre y c&#243;digo</div></div>
-    <div class="role-card" onclick="go('login-tc')"><span class="ic">&#127979;</span><div class="lbl">Soy Maestro</div><div class="hint">Ver el progreso del grupo</div></div>
+    <div class="role-card" onclick="go('login-st')"><span class="ic">🏸</span><div class="lbl">Soy Estudiante</div><div class="hint">Entrar con mi nombre y código</div></div>
+    <div class="role-card" onclick="go('login-tc')"><span class="ic">🏫</span><div class="lbl">Soy Maestro</div><div class="hint">Ver el progreso del grupo</div></div>
   </div>
 </div>
 
 <div id="login-st" class="screen" style="position:relative">
-  <button class="btn-s" onclick="go('splash')" style="position:absolute;top:1.25rem;left:1.25rem">&larr; Atr&#225;s</button>
+  <button class="btn-s" onclick="go('splash')" style="position:absolute;top:1.25rem;left:1.25rem">&larr; Atrás</button>
   <div class="login-box">
-    <h2>&#127992; Bienvenido/a</h2><p>Selecciona tu nombre e ingresa tu c&#243;digo</p>
+    <h2>🏸 Bienvenido/a</h2><p>Selecciona tu nombre e ingresa tu código</p>
     <div class="field"><label>Tu nombre</label>
-      <select id="st-name"><option value="">&#8212; Selecciona tu nombre &#8212;</option></select>
+      <select id="st-name"><option value="">— Selecciona tu nombre —</option></select>
     </div>
-    <div class="field"><label>C&#243;digo de clase</label>
+    <div class="field"><label>Código de clase</label>
       <input id="st-code" type="text" placeholder="Ej: 1234" maxlength="10" autocomplete="off" onkeydown="if(event.key==='Enter')doLoginSt()">
     </div>
-    <button class="btn-p" onclick="doLoginSt()">Entrar &#10024;</button>
+    <button class="btn-p" onclick="doLoginSt()">Entrar ✨</button>
     <div id="st-err" class="err"></div>
   </div>
 </div>
 
 <div id="login-tc" class="screen" style="position:relative">
-  <button class="btn-s" onclick="go('splash')" style="position:absolute;top:1.25rem;left:1.25rem">&larr; Atr&#225;s</button>
+  <button class="btn-s" onclick="go('splash')" style="position:absolute;top:1.25rem;left:1.25rem">&larr; Atrás</button>
   <div class="login-box">
-    <h2>&#127979; Panel del Maestro</h2><p>Ingresa el c&#243;digo de acceso del maestro</p>
-    <div class="field"><label>C&#243;digo del maestro</label>
-      <input id="tc-code" type="password" placeholder="C&#243;digo privado" onkeydown="if(event.key==='Enter')doLoginTc()">
+    <h2>🏫 Panel del Maestro</h2><p>Ingresa el código de acceso del maestro</p>
+    <div class="field"><label>Código del maestro</label>
+      <input id="tc-code" type="password" placeholder="Código privado" onkeydown="if(event.key==='Enter')doLoginTc()">
     </div>
-    <button class="btn-p" onclick="doLoginTc()">Acceder &#128273;</button>
-    <div id="tc-err" class="err">&#9888;&#65039; C&#243;digo incorrecto.</div>
+    <button class="btn-p" onclick="doLoginTc()">Acceder 🔑</button>
+    <div id="tc-err" class="err">⚠️ Código incorrecto.</div>
   </div>
 </div>
 
 <div id="st-dash" class="screen">
   <div class="topbar">
-    <div><div class="app-nm">&#128081; Inglaterra</div><div class="usr">Bienvenido/a, <strong id="st-disp">&#8212;</strong></div></div>
+    <div><div class="app-nm">👑 Inglaterra</div><div class="usr">Bienvenido/a, <strong id="st-disp">—</strong></div></div>
     <button class="btn-s" onclick="logoutSt()">Salir</button>
   </div>
   <div class="dash-body">
@@ -231,7 +231,7 @@ var FB=true;
       <button class="wtab" onclick="filterW(3,this)">Semana 3</button>
       <button class="wtab" onclick="filterW(4,this)">Semana 4</button>
     </div>
-    <div class="sec-title">&#128218; Actividades</div>
+    <div class="sec-title">📚 Actividades</div>
     <div class="act-grid" id="act-grid"></div>
   </div>
 </div>
@@ -243,55 +243,55 @@ var FB=true;
   </div>
   <div class="act-body" id="act-body"></div>
   <div class="act-ftr">
-    <div class="score-lbl">Puntaje: <strong id="score-disp">&#8212;</strong></div>
+    <div class="score-lbl">Puntaje: <strong id="score-disp">—</strong></div>
     <div style="display:flex;gap:.65rem;flex-wrap:wrap">
-      <button class="btn-s" id="btn-check" onclick="checkAns()" style="display:none">Verificar &#10003;</button>
+      <button class="btn-s" id="btn-check" onclick="checkAns()" style="display:none">Verificar ✓</button>
       <button class="btn-p" id="btn-next" onclick="goNext()" style="display:none;width:auto;padding:.7rem 1.4rem">Siguiente &rarr;</button>
-      <button class="btn-p" id="btn-finish" onclick="finishAct()" style="display:none;width:auto;padding:.7rem 1.4rem">Finalizar &#127942;</button>
+      <button class="btn-p" id="btn-finish" onclick="finishAct()" style="display:none;width:auto;padding:.7rem 1.4rem">Finalizar 🏆</button>
     </div>
   </div>
 </div>
 
 <div id="result" class="screen">
-  <div class="res-icon" id="res-icon">&#127942;</div>
-  <div class="res-score" id="res-score">&#8212;</div>
-  <div class="res-label" id="res-label">&#8212;</div>
-  <div class="res-msg" id="res-msg">&#8212;</div>
+  <div class="res-icon" id="res-icon">🏆</div>
+  <div class="res-score" id="res-score">—</div>
+  <div class="res-label" id="res-label">—</div>
+  <div class="res-msg" id="res-msg">—</div>
   <div class="res-btns">
     <button class="btn-s" onclick="backDash()">&larr; Todas las actividades</button>
-    <button class="btn-p" onclick="retryAct()" style="width:auto;padding:.7rem 1.4rem">Intentar de nuevo &#128260;</button>
+    <button class="btn-p" onclick="retryAct()" style="width:auto;padding:.7rem 1.4rem">Intentar de nuevo 🔄</button>
   </div>
 </div>
 
 <div id="tc-dash" class="screen">
   <div class="topbar">
-    <div><div class="app-nm">&#127979; Panel del Maestro</div><div class="usr">Unidad 3.4 &#8212; Inglaterra</div></div>
+    <div><div class="app-nm">🏫 Panel del Maestro</div><div class="usr">Unidad 3.4 — Inglaterra</div></div>
     <button class="btn-s" onclick="logoutTc()">Salir</button>
   </div>
   <div class="teacher-body">
     <div class="t-tabs">
-      <button class="ttab on" onclick="tcTab('t-scores',this)">&#128202; Puntuaciones</button>
-      <button class="ttab" onclick="tcTab('t-acts',this)">&#128203; Actividades</button>
-      <button class="ttab" onclick="tcTab('t-mgmt',this)">&#128101; Gestionar estudiantes</button>
+      <button class="ttab on" onclick="tcTab('t-scores',this)">📊 Puntuaciones</button>
+      <button class="ttab" onclick="tcTab('t-acts',this)">📋 Actividades</button>
+      <button class="ttab" onclick="tcTab('t-mgmt',this)">👥 Gestionar estudiantes</button>
     </div>
     <div id="t-scores">
-      <div class="sec-title">&#128202; Progreso del grupo</div>
-      <div class="tbl-wrap"><table><thead><tr><th>Estudiante</th><th>Completadas</th><th>Promedio</th><th>Calificaci&#243;n</th></tr></thead><tbody id="tc-scores-body"><tr><td colspan="4" style="text-align:center;padding:1.5rem;color:rgba(255,255,255,.4)">Cargando...</td></tr></tbody></table></div>
+      <div class="sec-title">📊 Progreso del grupo</div>
+      <div class="tbl-wrap"><table><thead><tr><th>Estudiante</th><th>Completadas</th><th>Promedio</th><th>Calificación</th></tr></thead><tbody id="tc-scores-body"><tr><td colspan="4" style="text-align:center;padding:1.5rem;color:rgba(255,255,255,.4)">Cargando...</td></tr></tbody></table></div>
     </div>
     <div id="t-acts" style="display:none">
-      <div class="sec-title">&#128203; Actividades de la unidad</div>
-      <div class="tbl-wrap"><table><thead><tr><th>#</th><th>Actividad</th><th>Semana</th><th>D&#237;a</th><th>Tipo</th></tr></thead><tbody id="tc-acts-body"></tbody></table></div>
+      <div class="sec-title">📋 Actividades de la unidad</div>
+      <div class="tbl-wrap"><table><thead><tr><th>#</th><th>Actividad</th><th>Semana</th><th>Día</th><th>Tipo</th></tr></thead><tbody id="tc-acts-body"></tbody></table></div>
     </div>
     <div id="t-mgmt" style="display:none">
-      <div class="sec-title">&#128101; Gestionar estudiantes</div>
+      <div class="sec-title">👥 Gestionar estudiantes</div>
       <div style="background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.12);border-radius:14px;padding:1.25rem;max-width:400px;margin-bottom:1.5rem">
-        <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:1rem">&#10133; Agregar estudiante</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:1rem">➕ Agregar estudiante</div>
         <div class="field"><label>Nombre completo</label><input id="new-st-name" type="text" placeholder="Nombre Apellido"></div>
-        <div class="field"><label>C&#243;digo / Contrase&#241;a</label><input id="new-st-code" type="text" placeholder="Ej: 2024"></div>
-        <button class="btn-p" onclick="addStudent()">Agregar &#10133;</button>
+        <div class="field"><label>Código / Contraseña</label><input id="new-st-code" type="text" placeholder="Ej: 2024"></div>
+        <button class="btn-p" onclick="addStudent()">Agregar ➕</button>
         <div id="add-st-msg" style="display:none;margin-top:.65rem;font-size:.85rem;padding:.5rem .75rem;background:rgba(200,16,46,.12);border-radius:8px;color:#ff8888"></div>
       </div>
-      <div class="tbl-wrap"><table><thead><tr><th>#</th><th>Nombre</th><th>C&#243;digo</th><th>Acciones</th></tr></thead><tbody id="st-manage-body"><tr><td colspan="4" style="text-align:center;padding:1.5rem;color:rgba(255,255,255,.4)">Cargando...</td></tr></tbody></table></div>
+      <div class="tbl-wrap"><table><thead><tr><th>#</th><th>Nombre</th><th>Código</th><th>Acciones</th></tr></thead><tbody id="st-manage-body"><tr><td colspan="4" style="text-align:center;padding:1.5rem;color:rgba(255,255,255,.4)">Cargando...</td></tr></tbody></table></div>
     </div>
   </div>
 </div>
@@ -300,107 +300,107 @@ var FB=true;
 
 <script>
 var ACTS=[
-  {id:"act01",w:1,title:"Ficha de Inglaterra",type:"fill",icon:"&#128506;",day:"Lunes"},
-  {id:"act02",w:1,title:"Sopa de letras",type:"ws",icon:"&#128269;",day:"Martes"},
-  {id:"act03",w:1,title:"Diagrama de Venn",type:"venn",icon:"&#9711;",day:"Mi&#233;rcoles"},
-  {id:"act04",w:1,title:"Verso y estrofa",type:"mc",icon:"&#128220;",day:"Jueves"},
-  {id:"act05",w:1,title:"Emparejar rimas",type:"match",icon:"&#127925;",day:"Viernes"},
-  {id:"act06",w:2,title:"Literal vs. figurado",type:"mc",icon:"&#128173;",day:"Lunes"},
-  {id:"act07",w:2,title:"Ordenar s&#237;labas",type:"order",icon:"&#128308;",day:"Martes"},
-  {id:"act08",w:2,title:"Diptongos",type:"fill",icon:"&#128279;",day:"Mi&#233;rcoles"},
-  {id:"act09",w:2,title:"Triptongos",type:"match",icon:"&#128279;",day:"Jueves"},
-  {id:"act10",w:2,title:"Dipt/Tript/Hiato",type:"classify",icon:"&#128202;",day:"Viernes"},
-  {id:"act11",w:3,title:"S&#237;laba t&#243;nica",type:"mc",icon:"&#127919;",day:"Lunes"},
-  {id:"act12",w:3,title:"Vocabulario africano",type:"match",icon:"&#127757;",day:"Martes"},
-  {id:"act13",w:3,title:"Poes&#237;a negroide",type:"mc",icon:"&#129345;",day:"Mi&#233;rcoles"},
-  {id:"act14",w:4,title:"Palabras agudas",type:"classify",icon:"&#128200;",day:"Lunes"},
-  {id:"act15",w:4,title:"Palabras llanas",type:"classify",icon:"&#128201;",day:"Martes"},
-  {id:"act16",w:4,title:"Palabras esdr&#250;julas",type:"mc",icon:"&#11088;",day:"Mi&#233;rcoles"},
-  {id:"act17",w:4,title:"Repaso general",type:"mc",icon:"&#127942;",day:"Jueves"}
+  {id:"act01",w:1,title:"Ficha de Inglaterra",type:"fill",icon:"🗺",day:"Lunes"},
+  {id:"act02",w:1,title:"Sopa de letras",type:"ws",icon:"🔍",day:"Martes"},
+  {id:"act03",w:1,title:"Diagrama de Venn",type:"venn",icon:"◯",day:"Miércoles"},
+  {id:"act04",w:1,title:"Verso y estrofa",type:"mc",icon:"📜",day:"Jueves"},
+  {id:"act05",w:1,title:"Emparejar rimas",type:"match",icon:"🎵",day:"Viernes"},
+  {id:"act06",w:2,title:"Literal vs. figurado",type:"mc",icon:"💭",day:"Lunes"},
+  {id:"act07",w:2,title:"Ordenar sílabas",type:"order",icon:"🔴",day:"Martes"},
+  {id:"act08",w:2,title:"Diptongos",type:"fill",icon:"🔗",day:"Miércoles"},
+  {id:"act09",w:2,title:"Triptongos",type:"match",icon:"🔗",day:"Jueves"},
+  {id:"act10",w:2,title:"Dipt/Tript/Hiato",type:"classify",icon:"📊",day:"Viernes"},
+  {id:"act11",w:3,title:"Sílaba tónica",type:"mc",icon:"🎯",day:"Lunes"},
+  {id:"act12",w:3,title:"Vocabulario africano",type:"match",icon:"🌍",day:"Martes"},
+  {id:"act13",w:3,title:"Poesía negroide",type:"mc",icon:"🥁",day:"Miércoles"},
+  {id:"act14",w:4,title:"Palabras agudas",type:"classify",icon:"📈",day:"Lunes"},
+  {id:"act15",w:4,title:"Palabras llanas",type:"classify",icon:"📉",day:"Martes"},
+  {id:"act16",w:4,title:"Palabras esdrújulas",type:"mc",icon:"⭐",day:"Miércoles"},
+  {id:"act17",w:4,title:"Repaso general",type:"mc",icon:"🏆",day:"Jueves"}
 ];
 
-var TLABEL={mc:"Selecci&#243;n m&#250;ltiple",fill:"Completar espacios",match:"Emparejar",ws:"Sopa de letras",venn:"Diagrama de Venn",order:"Ordenar s&#237;labas",classify:"Clasificar"};
+var TLABEL={mc:"Selección múltiple",fill:"Completar espacios",match:"Emparejar",ws:"Sopa de letras",venn:"Diagrama de Venn",order:"Ordenar sílabas",classify:"Clasificar"};
 
 var DATA={
-  act01:{type:"fill",instr:"Completa los espacios con informaci&#243;n sobre Inglaterra.",qs:[
+  act01:{type:"fill",instr:"Completa los espacios con información sobre Inglaterra.",qs:[
     {s:"La capital de Inglaterra es ___.",a:"Londres",h:"Empieza con L"},
-    {s:"El idioma oficial es el ___.",a:"ingl&#233;s",h:"Se habla tambi&#233;n en EE.UU."},
-    {s:"El r&#237;o m&#225;s famoso es el ___.",a:"T&#225;mesis",h:"Thames en ingl&#233;s"},
+    {s:"El idioma oficial es el ___.",a:"inglés",h:"Se habla también en EE.UU."},
+    {s:"El río más famoso es el ___.",a:"Támesis",h:"Thames en inglés"},
     {s:"El reloj famoso se llama el ___.",a:"Big Ben",h:"Dos palabras"},
-    {s:"La bandera se llama ___ Jack.",a:"Union",h:"Palabra en ingl&#233;s"}
+    {s:"La bandera se llama ___ Jack.",a:"Union",h:"Palabra en inglés"}
   ]},
-  act02:{type:"ws",instr:"Encuentra las palabras. Clic en la primera letra y luego en la &#250;ltima.",words:["BIGBEN","THAMES","REINA","CASTILLO","NIEBLA","PUENTE","LONDRES","TE"]},
+  act02:{type:"ws",instr:"Encuentra las palabras. Clic en la primera letra y luego en la última.",words:["BIGBEN","THAMES","REINA","CASTILLO","NIEBLA","PUENTE","LONDRES","TE"]},
   act03:{type:"venn",instr:"Arrastra cada elemento al lugar correcto del diagrama.",items:[
-    {t:"Habla ingl&#233;s",s:"left"},{t:"Habla espa&#241;ol",s:"right"},{t:"Monumentos hist&#243;ricos",s:"center"},
+    {t:"Habla inglés",s:"left"},{t:"Habla español",s:"right"},{t:"Monumentos históricos",s:"center"},
     {t:"Es una isla",s:"center"},{t:"Tiene 4 estaciones",s:"left"},{t:"Playa tropical",s:"right"},
     {t:"Orgullo cultural",s:"center"},{t:"El Big Ben",s:"left"},{t:"El Morro",s:"right"}
   ]},
   act04:{type:"mc",instr:"Selecciona la respuesta correcta sobre la estructura de los poemas.",qs:[
-    {q:"&#191;C&#243;mo se llama cada l&#237;nea de un poema?",opts:["Estrofa","Verso","Rima","Poema"],a:1},
-    {q:"&#191;C&#243;mo se llama el grupo de versos?",opts:["Verso","T&#237;tulo","Estrofa","P&#225;rrafo"],a:2},
-    {q:"&#191;Qu&#233; divide el poema en partes?",opts:["La rima","Las estrofas","El t&#237;tulo","El poeta"],a:1},
-    {q:"&#191;Cu&#225;l describe mejor un poema?",opts:["Sin estructura","Con versos y estrofas","Lista de palabras","P&#225;rrafo largo"],a:1}
+    {q:"¿Cómo se llama cada línea de un poema?",opts:["Estrofa","Verso","Rima","Poema"],a:1},
+    {q:"¿Cómo se llama el grupo de versos?",opts:["Verso","Título","Estrofa","Párrafo"],a:2},
+    {q:"¿Qué divide el poema en partes?",opts:["La rima","Las estrofas","El título","El poeta"],a:1},
+    {q:"¿Cuál describe mejor un poema?",opts:["Sin estructura","Con versos y estrofas","Lista de palabras","Párrafo largo"],a:1}
   ]},
   act05:{type:"match",instr:"Conecta cada palabra con la que rima.",pairs:[["luna","cuna"],["alma","calma"],["llano","mano"],["elegancia","fragancia"],["valiente","creciente"],["pan","tan"]]},
-  act06:{type:"mc",instr:"&#191;El verso tiene significado literal o figurado?",qs:[
-    {q:"'La nube dibuj&#243; un drag&#243;n en el cielo.'",opts:["Literal","Figurado &#8212; parec&#237;a un drag&#243;n","Los dos","Ninguno"],a:1},
-    {q:"'El viento aullaba como un lobo.'",opts:["Literal","Figurado &#8212; compara el viento","Los dos","Ninguno"],a:1},
-    {q:"'El Thames tiene 346 km de largo.'",opts:["Figurado","Literal &#8212; dato real","Comparaci&#243;n","Personificaci&#243;n"],a:1},
-    {q:"'El Big Ben es el guardi&#225;n del tiempo.'",opts:["Literal","Figurado &#8212; personifica el Big Ben","Ninguno","Comparaci&#243;n"],a:1}
+  act06:{type:"mc",instr:"¿El verso tiene significado literal o figurado?",qs:[
+    {q:"'La nube dibujó un dragón en el cielo.'",opts:["Literal","Figurado — parecía un dragón","Los dos","Ninguno"],a:1},
+    {q:"'El viento aullaba como un lobo.'",opts:["Literal","Figurado — compara el viento","Los dos","Ninguno"],a:1},
+    {q:"'El Thames tiene 346 km de largo.'",opts:["Figurado","Literal — dato real","Comparación","Personificación"],a:1},
+    {q:"'El Big Ben es el guardián del tiempo.'",opts:["Literal","Figurado — personifica el Big Ben","Ninguno","Comparación"],a:1}
   ]},
-  act07:{type:"order",instr:"Haz clic en las s&#237;labas en el orden correcto para formar cada palabra.",words:[
-    {syls:["bi","ci","cle","ta"],ans:"bicicleta",tipo:"polis&#237;laba"},
-    {syls:["ca","sa"],ans:"casa",tipo:"bis&#237;laba"},
-    {syls:["sol"],ans:"sol",tipo:"monos&#237;laba"},
-    {syls:["ma","ri","po","sa"],ans:"mariposa",tipo:"polis&#237;laba"},
-    {syls:["a","vi&#243;n"],ans:"avi&#243;n",tipo:"bis&#237;laba"},
-    {syls:["te","l&#233;","fo","no"],ans:"tel&#233;fono",tipo:"polis&#237;laba"}
+  act07:{type:"order",instr:"Haz clic en las sílabas en el orden correcto para formar cada palabra.",words:[
+    {syls:["bi","ci","cle","ta"],ans:"bicicleta",tipo:"polisílaba"},
+    {syls:["ca","sa"],ans:"casa",tipo:"bisílaba"},
+    {syls:["sol"],ans:"sol",tipo:"monosílaba"},
+    {syls:["ma","ri","po","sa"],ans:"mariposa",tipo:"polisílaba"},
+    {syls:["a","vión"],ans:"avión",tipo:"bisílaba"},
+    {syls:["te","lé","fo","no"],ans:"teléfono",tipo:"polisílaba"}
   ]},
-  act08:{type:"fill",instr:"Completa. &#128161; Diptongo = vocal abierta + cerrada en la MISMA s&#237;laba.",qs:[
+  act08:{type:"fill",instr:"Completa. 💡 Diptongo = vocal abierta + cerrada en la MISMA sílaba.",qs:[
     {s:"'violeta' tiene ___ diptongo(s).",a:"1",h:"vio-le-ta"},
     {s:"Las vocales abiertas son a, e y ___.",a:"o",h:"Son tres"},
     {s:"'ciudad' tiene el diptongo ___.",a:"iu",h:"ciu-dad"},
     {s:"En 'vuelo', el diptongo es u + ___.",a:"e",h:"vue-lo"},
-    {s:"&#191;Tiene diptongo 'piano'? (s&#237;/no): ___.",a:"s&#237;",h:"pia-no &#8594; ia"}
+    {s:"¿Tiene diptongo 'piano'? (sí/no): ___.",a:"sí",h:"pia-no → ia"}
   ]},
-  act09:{type:"match",instr:"Empareja la palabra con su clasificaci&#243;n.",pairs:[["buey","triptongo"],["piano","diptongo"],["pa&#237;s","hiato"],["Uruguay","triptongo"],["poema","hiato"],["ciudad","diptongo"]]},
+  act09:{type:"match",instr:"Empareja la palabra con su clasificación.",pairs:[["buey","triptongo"],["piano","diptongo"],["país","hiato"],["Uruguay","triptongo"],["poema","hiato"],["ciudad","diptongo"]]},
   act10:{type:"classify",instr:"Clasifica cada palabra correctamente.",cats:["Diptongo","Triptongo","Hiato"],items:[
-    {w:"piano",c:0},{w:"buey",c:1},{w:"pa&#237;s",c:2},{w:"ciudad",c:0},{w:"Uruguay",c:1},{w:"poema",c:2},{w:"aire",c:0},{w:"ba&#250;l",c:2}
+    {w:"piano",c:0},{w:"buey",c:1},{w:"país",c:2},{w:"ciudad",c:0},{w:"Uruguay",c:1},{w:"poema",c:2},{w:"aire",c:0},{w:"baúl",c:2}
   ]},
-  act11:{type:"mc",instr:"Identifica la posici&#243;n de la s&#237;laba t&#243;nica.",qs:[
-    {q:"En 'CA-sa', la s&#237;laba t&#243;nica est&#225; en:",opts:["&#218;ltima","Pen&#250;ltima","Antepen&#250;ltima","No tiene"],a:1},
-    {q:"En 'ca-BA-llo', est&#225; en:",opts:["&#218;ltima","Pen&#250;ltima","Antepen&#250;ltima","Primera"],a:1},
-    {q:"En 'M&#218;-si-ca', est&#225; en:",opts:["&#218;ltima","Pen&#250;ltima","Antepen&#250;ltima","Segunda"],a:2},
-    {q:"En 'ca-F&#201;', est&#225; en:",opts:["Primera","Pen&#250;ltima","&#218;ltima","No tiene"],a:2},
-    {q:"&#191;Qu&#233; es la s&#237;laba t&#243;nica?",opts:["La primera","La m&#225;s larga","La que suena m&#225;s fuerte","La que siempre lleva tilde"],a:2}
+  act11:{type:"mc",instr:"Identifica la posición de la sílaba tónica.",qs:[
+    {q:"En 'CA-sa', la sílaba tónica está en:",opts:["Última","Penúltima","Antepenúltima","No tiene"],a:1},
+    {q:"En 'ca-BA-llo', está en:",opts:["Última","Penúltima","Antepenúltima","Primera"],a:1},
+    {q:"En 'MÚ-si-ca', está en:",opts:["Última","Penúltima","Antepenúltima","Segunda"],a:2},
+    {q:"En 'ca-FÉ', está en:",opts:["Primera","Penúltima","Última","No tiene"],a:2},
+    {q:"¿Qué es la sílaba tónica?",opts:["La primera","La más larga","La que suena más fuerte","La que siempre lleva tilde"],a:2}
   ]},
-  act12:{type:"match",instr:"Empareja cada palabra africana con su significado.",pairs:[["bemba","labios gruesos"],["&#241;ame","tuber&#237;culo comestible"],["ch&#233;vere","excelente, genial"],["guarapo","jugo de ca&#241;a"],["bemb&#233;","fiesta con m&#250;sica"],["fuf&#250;","masa de pl&#225;tano"]]},
-  act13:{type:"mc",instr:"Preguntas sobre la poes&#237;a negroide.",qs:[
-    {q:"&#191;Qu&#233; tipo de poes&#237;a es 'Danza Negra'?",opts:["Rom&#225;ntica","Negroide / afrocaribe&#241;a","Buc&#243;lica","&#201;pica"],a:1},
-    {q:"&#191;Qui&#233;n escribi&#243; 'Danza Negra'?",opts:["Julia de Burgos","Virgilio D&#225;vila","Luis Pal&#233;s Matos","Andr&#233;s D&#237;az"],a:2},
-    {q:"&#191;Qu&#233; destaca en el ritmo de 'Danza Negra'?",opts:["No tiene ritmo","Imita la bomba africana","Es un soneto","Verso libre"],a:1},
-    {q:"&#191;Qu&#233; figura es 'calemb&#233;, calemb&#233;'?",opts:["Met&#225;fora","Aliteraci&#243;n y onomatopeya","S&#237;mil","Hip&#233;rbole"],a:1}
+  act12:{type:"match",instr:"Empareja cada palabra africana con su significado.",pairs:[["bemba","labios gruesos"],["ñame","tuberículo comestible"],["chévere","excelente, genial"],["guarapo","jugo de caña"],["bembé","fiesta con música"],["fufú","masa de plátano"]]},
+  act13:{type:"mc",instr:"Preguntas sobre la poesía negroide.",qs:[
+    {q:"¿Qué tipo de poesía es 'Danza Negra'?",opts:["Romántica","Negroide / afrocaribeña","Bucólica","Épica"],a:1},
+    {q:"¿Quién escribió 'Danza Negra'?",opts:["Julia de Burgos","Virgilio Dávila","Luis Palés Matos","Andrés Díaz"],a:2},
+    {q:"¿Qué destaca en el ritmo de 'Danza Negra'?",opts:["No tiene ritmo","Imita la bomba africana","Es un soneto","Verso libre"],a:1},
+    {q:"¿Qué figura es 'calembé, calembé'?",opts:["Metáfora","Aliteración y onomatopeya","Símil","Hipérbole"],a:1}
   ]},
   act14:{type:"classify",instr:"Clasifica las palabras agudas.",cats:["Aguda CON tilde","Aguda SIN tilde","No es aguda"],items:[
-    {w:"caf&#233;",c:0},{w:"amor",c:1},{w:"casa",c:2},{w:"cami&#243;n",c:0},{w:"reloj",c:1},{w:"l&#225;piz",c:2},{w:"canci&#243;n",c:0},{w:"papel",c:1}
+    {w:"café",c:0},{w:"amor",c:1},{w:"casa",c:2},{w:"camión",c:0},{w:"reloj",c:1},{w:"lápiz",c:2},{w:"canción",c:0},{w:"papel",c:1}
   ]},
   act15:{type:"classify",instr:"Clasifica las palabras llanas.",cats:["Llana CON tilde","Llana SIN tilde","No es llana"],items:[
-    {w:"&#225;rbol",c:0},{w:"casa",c:1},{w:"caf&#233;",c:2},{w:"l&#225;piz",c:0},{w:"libro",c:1},{w:"cami&#243;n",c:2},{w:"f&#225;cil",c:0},{w:"mesa",c:1}
+    {w:"árbol",c:0},{w:"casa",c:1},{w:"café",c:2},{w:"lápiz",c:0},{w:"libro",c:1},{w:"camión",c:2},{w:"fácil",c:0},{w:"mesa",c:1}
   ]},
-  act16:{type:"mc",instr:"Preguntas sobre palabras esdr&#250;julas.",qs:[
-    {q:"&#191;Cu&#225;l es esdr&#250;jula?",opts:["caf&#233;","casa","m&#250;sica","cami&#243;n"],a:2},
-    {q:"&#191;Cu&#225;l es esdr&#250;jula?",opts:["papel","tel&#233;fono","amor","&#225;rbol"],a:1},
-    {q:"Las esdr&#250;julas SIEMPRE llevan tilde porque:",opts:["Terminan en vocal","Acento en la antepen&#250;ltima","Son largas","Sin excepci&#243;n"],a:1},
-    {q:"&#191;Cu&#225;l es esdr&#250;jula?",opts:["canci&#243;n","s&#237;laba","casa","reloj"],a:1},
-    {q:"&#191;Cu&#225;ntas tildes tiene 'tel&#233;fono'?",opts:["0","1","2","3"],a:1}
+  act16:{type:"mc",instr:"Preguntas sobre palabras esdrújulas.",qs:[
+    {q:"¿Cuál es esdrújula?",opts:["café","casa","música","camión"],a:2},
+    {q:"¿Cuál es esdrújula?",opts:["papel","teléfono","amor","árbol"],a:1},
+    {q:"Las esdrújulas SIEMPRE llevan tilde porque:",opts:["Terminan en vocal","Acento en la antepenúltima","Son largas","Sin excepción"],a:1},
+    {q:"¿Cuál es esdrújula?",opts:["canción","sílaba","casa","reloj"],a:1},
+    {q:"¿Cuántas tildes tiene 'teléfono'?",opts:["0","1","2","3"],a:1}
   ]},
   act17:{type:"mc",instr:"Repaso general de toda la unidad.",qs:[
-    {q:"&#191;C&#243;mo se llama la s&#237;laba que suena con m&#225;s fuerza?",opts:["&#193;tona","T&#243;nica","Libre","R&#237;tmica"],a:1},
-    {q:"&#191;Qu&#233; es un diptongo?",opts:["Dos consonantes","Una vocal","Dos vocales en s&#237;labas distintas","Vocal abierta + cerrada en la misma s&#237;laba"],a:3},
-    {q:"&#191;Cu&#225;ndo llevan tilde las agudas?",opts:["Siempre","Nunca","Al terminar en vocal, n o s","Al terminar en consonante"],a:2},
-    {q:"&#191;Qu&#233; son las im&#225;genes sensoriales?",opts:["Fotos","Palabras que activan los sentidos","Figuras geom&#233;tricas","Rimas especiales"],a:1},
-    {q:"&#191;Qu&#233; es un hiato?",opts:["Dos vocales cerradas","Tres vocales","Dos vocales en s&#237;labas SEPARADAS","Diptongo especial"],a:2},
-    {q:"&#191;Cu&#225;l es la capital de Inglaterra?",opts:["Manchester","Birmingham","Londres","Liverpool"],a:2}
+    {q:"¿Cómo se llama la sílaba que suena con más fuerza?",opts:["Átona","Tónica","Libre","Rítmica"],a:1},
+    {q:"¿Qué es un diptongo?",opts:["Dos consonantes","Una vocal","Dos vocales en sílabas distintas","Vocal abierta + cerrada en la misma sílaba"],a:3},
+    {q:"¿Cuándo llevan tilde las agudas?",opts:["Siempre","Nunca","Al terminar en vocal, n o s","Al terminar en consonante"],a:2},
+    {q:"¿Qué son las imágenes sensoriales?",opts:["Fotos","Palabras que activan los sentidos","Figuras geométricas","Rimas especiales"],a:1},
+    {q:"¿Qué es un hiato?",opts:["Dos vocales cerradas","Tres vocales","Dos vocales en sílabas SEPARADAS","Diptongo especial"],a:2},
+    {q:"¿Cuál es la capital de Inglaterra?",opts:["Manchester","Birmingham","Londres","Liverpool"],a:2}
   ]}
 };
 
@@ -482,7 +482,7 @@ function logoutTc(){document.getElementById('tc-code').value='';go('splash');}
 
 function loadStSelect(){
   var sel=document.getElementById('st-name');
-  sel.innerHTML='<option value="">&#8212; Selecciona tu nombre &#8212;</option>';
+  sel.innerHTML='<option value="">— Selecciona tu nombre —</option>';
   if(!FB)return;
   db.collection('estudiantes').get().then(function(snap){
     snap.forEach(function(d){
@@ -544,7 +544,7 @@ function openAct(id){
   var meta=ACTS.find(function(a){return a.id===id;});
   document.getElementById('ah-num').textContent='Actividad '+(ACTS.indexOf(meta)+1)+' &middot; Semana '+meta.w+' &middot; '+meta.day;
   document.getElementById('ah-title').textContent=meta.title;
-  document.getElementById('score-disp').textContent='&#8212;';
+  document.getElementById('score-disp').textContent='—';
   var body=document.getElementById('act-body');
   if(d.type==='mc')rMC(d,body);
   else if(d.type==='fill')rFill(d,body);
@@ -845,7 +845,7 @@ function rOrderWord(body){
     shuf.map(function(s,i){return '<button class="syl" id="sb'+i+'" onclick="selSyl('+i+',\''+s+'\')">'+s+'</button>';}).join('')+
     '</div>'+
     '<div style="margin-bottom:.35rem;font-size:.8rem;color:rgba(255,255,255,.45)">Tu respuesta:</div>'+
-    '<div class="order-ans" id="oa">&#8212;</div>'+
+    '<div class="order-ans" id="oa">—</div>'+
     '<div class="fb" id="act-fb"></div>';
   setBtns('check');
 }
@@ -937,8 +937,8 @@ function loadTcScores(){
         var total=0,count=0;
         rs.forEach(function(r){total+=r.data().puntuacion||0;count++;});
         var prom=count>0?Math.round(total/count):0;
-        var grade=prom>=90?'<span style="color:#6de09d;font-weight:600">A</span>':prom>=80?'<span style="color:var(--gold);font-weight:600">B</span>':prom>=70?'<span style="color:#ff9a78;font-weight:600">C</span>':'<span style="color:rgba(255,255,255,.35)">&#8212;</span>';
-        rows.push('<tr><td>'+sd.data().nombre+'</td><td>'+count+'/'+ACTS.length+'</td><td>'+(prom>0?prom+'%':'&#8212;')+'</td><td>'+grade+'</td></tr>');
+        var grade=prom>=90?'<span style="color:#6de09d;font-weight:600">A</span>':prom>=80?'<span style="color:var(--gold);font-weight:600">B</span>':prom>=70?'<span style="color:#ff9a78;font-weight:600">C</span>':'<span style="color:rgba(255,255,255,.35)">—</span>';
+        rows.push('<tr><td>'+sd.data().nombre+'</td><td>'+count+'/'+ACTS.length+'</td><td>'+(prom>0?prom+'%':'—')+'</td><td>'+grade+'</td></tr>');
         pending--;if(pending===0)renderRows();
       }).catch(function(){pending--;if(pending===0)renderRows();});
     });
