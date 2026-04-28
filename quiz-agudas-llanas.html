@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agudas y Llanas</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#F0F4FF;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:1rem;}
+.wrap{background:#fff;border-radius:16px;padding:1.5rem;width:100%;max-width:480px;box-shadow:0 4px 20px rgba(0,0,0,0.1);}
+.score-row{display:flex;gap:10px;margin-bottom:1.25rem;}
+.sc{flex:1;background:#F8F9FF;border-radius:10px;padding:.6rem .5rem;text-align:center;border:1px solid #E0E7FF;}
+.sc-label{font-size:11px;color:#6B7280;margin-bottom:3px;}
+.sc-val{font-size:22px;font-weight:700;color:#1E1B4B;}
+.progress-bar{height:5px;background:#E0E7FF;border-radius:99px;margin-bottom:1.25rem;overflow:hidden;}
+.progress-fill{height:100%;background:#4F46E5;border-radius:99px;transition:width .3s;}
+.counter{font-size:12px;color:#9CA3AF;text-align:right;margin-bottom:.4rem;}
+.word-card{background:linear-gradient(135deg,#4F46E5,#7C3AED);border-radius:14px;padding:1.75rem 1rem;text-align:center;margin-bottom:1rem;}
+.word-main{font-size:38px;font-weight:700;color:#fff;margin-bottom:.4rem;letter-spacing:.02em;}
+.word-syl{font-size:14px;color:rgba(255,255,255,0.75);}
+.btn-row{display:flex;gap:10px;margin-bottom:.9rem;}
+.opt-btn{flex:1;padding:.8rem;border-radius:10px;border:2px solid #E0E7FF;background:#F8F9FF;font-size:16px;font-weight:600;color:#1E1B4B;cursor:pointer;transition:all .15s;}
+.opt-btn:hover:not(:disabled){background:#EEF2FF;border-color:#4F46E5;color:#4F46E5;}
+.opt-btn.correct{background:#D1FAE5;border-color:#10B981;color:#065F46;}
+.opt-btn.wrong{background:#FEE2E2;border-color:#EF4444;color:#7F1D1D;}
+.opt-btn.reveal{background:#DBEAFE;border-color:#3B82F6;color:#1E3A8A;}
+.opt-btn:disabled{cursor:default;}
+.feedback{min-height:54px;border-radius:10px;padding:.75rem 1rem;font-size:13px;line-height:1.5;margin-bottom:.9rem;display:flex;align-items:flex-start;gap:8px;background:#F8F9FF;border:1px solid #E0E7FF;color:#6B7280;}
+.feedback.ok{background:#D1FAE5;border-color:#10B981;color:#065F46;}
+.feedback.bad{background:#FEE2E2;border-color:#EF4444;color:#7F1D1D;}
+.fb-icon{font-size:16px;flex-shrink:0;margin-top:1px;}
+.next-btn{width:100%;padding:.75rem;border-radius:10px;border:2px solid #4F46E5;background:#4F46E5;font-size:15px;font-weight:600;color:#fff;cursor:pointer;transition:background .15s;}
+.next-btn:hover{background:#4338CA;}
+.end-card{text-align:center;padding:1rem 0;}
+.end-score{font-size:52px;font-weight:700;color:#4F46E5;margin-bottom:.2rem;}
+.end-pct{font-size:16px;color:#6B7280;margin-bottom:.75rem;}
+.end-msg{font-size:15px;color:#1E1B4B;margin-bottom:1.5rem;line-height:1.5;}
+.restart-btn{padding:.75rem 2rem;border-radius:10px;border:2px solid #4F46E5;background:#4F46E5;font-size:15px;font-weight:600;color:#fff;cursor:pointer;}
+.restart-btn:hover{background:#4338CA;}
+.title-bar{display:flex;align-items:center;gap:8px;margin-bottom:1.25rem;}
+.title-dot{width:10px;height:10px;border-radius:50%;}
+.title-text{font-size:14px;font-weight:600;color:#4F46E5;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="title-bar">
+    <div class="title-dot" style="background:#4F46E5"></div>
+    <div class="title-dot" style="background:#7C3AED"></div>
+    <div class="title-dot" style="background:#A78BFA"></div>
+    <span class="title-text">Agudas y Llanas</span>
+  </div>
+  <div class="score-row">
+    <div class="sc"><div class="sc-label">Correctas</div><div class="sc-val" id="sc-c">0</div></div>
+    <div class="sc"><div class="sc-label">Incorrectas</div><div class="sc-val" id="sc-w">0</div></div>
+    <div class="sc"><div class="sc-label">Racha</div><div class="sc-val" id="sc-s">0</div></div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="prog" style="width:0%"></div></div>
+  <div id="quiz-area"></div>
+</div>
+
+<script>
+const WORDS=[
+  {w:"café",s:"ca · FÉ",t:"aguda",why:"Acento en la última sílaba (FÉ). Termina en vocal → lleva tilde."},
+  {w:"casa",s:"CA · sa",t:"llana",why:"Acento en la penúltima sílaba (CA). Termina en vocal → no lleva tilde."},
+  {w:"canción",s:"can · CIÓN",t:"aguda",why:"Acento en la última sílaba (CIÓN). Termina en n → lleva tilde."},
+  {w:"árbol",s:"ÁR · bol",t:"llana",why:"Acento en la penúltima sílaba (ÁR). Termina en l → lleva tilde."},
+  {w:"amor",s:"a · MOR",t:"aguda",why:"Acento en la última sílaba (MOR). Termina en r → no lleva tilde."},
+  {w:"libro",s:"LI · bro",t:"llana",why:"Acento en la penúltima sílaba (LI). Termina en vocal → no lleva tilde."},
+  {w:"jardín",s:"jar · DÍN",t:"aguda",why:"Acento en la última sílaba (DÍN). Termina en n → lleva tilde."},
+  {w:"lápiz",s:"LÁ · piz",t:"llana",why:"Acento en la penúltima sílaba (LÁ). Termina en z → lleva tilde."},
+  {w:"papel",s:"pa · PEL",t:"aguda",why:"Acento en la última sílaba (PEL). Termina en l → no lleva tilde."},
+  {w:"joven",s:"JO · ven",t:"llana",why:"Acento en la penúltima sílaba (JO). Termina en n → no lleva tilde."},
+  {w:"ciudad",s:"ciu · DAD",t:"aguda",why:"Acento en la última sílaba (DAD). Termina en d → no lleva tilde."},
+  {w:"fácil",s:"FÁ · cil",t:"llana",why:"Acento en la penúltima sílaba (FÁ). Termina en l → lleva tilde."},
+  {w:"reloj",s:"re · LOJ",t:"aguda",why:"Acento en la última sílaba (LOJ). Termina en j → no lleva tilde."},
+  {w:"mesa",s:"ME · sa",t:"llana",why:"Acento en la penúltima sílaba (ME). Termina en vocal → no lleva tilde."},
+  {w:"mamá",s:"ma · MÁ",t:"aguda",why:"Acento en la última sílaba (MÁ). Termina en vocal → lleva tilde."},
+  {w:"flores",s:"FLO · res",t:"llana",why:"Acento en la penúltima sílaba (FLO). Termina en s → no lleva tilde."},
+  {w:"camión",s:"ca · MIÓN",t:"aguda",why:"Acento en la última sílaba (MIÓN). Termina en n → lleva tilde."},
+  {w:"difícil",s:"di · FÍ · cil",t:"llana",why:"Acento en la penúltima sílaba (FÍ). Termina en l → lleva tilde."},
+];
+
+let order=[],idx=0,correct=0,wrong=0,streak=0,answered=false;
+
+function shuffle(a){let b=[...a];for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
+
+function start(){order=shuffle(WORDS);idx=0;correct=0;wrong=0;streak=0;render();}
+
+function render(){
+  document.getElementById('sc-c').textContent=correct;
+  document.getElementById('sc-w').textContent=wrong;
+  document.getElementById('sc-s').textContent=streak;
+  document.getElementById('prog').style.width=Math.round(idx/order.length*100)+'%';
+  if(idx>=order.length){showEnd();return;}
+  answered=false;
+  const item=order[idx];
+  document.getElementById('quiz-area').innerHTML=`
+    <div class="counter">${idx+1} de ${order.length}</div>
+    <div class="word-card">
+      <div class="word-main">${item.w}</div>
+      <div class="word-syl">${item.s}</div>
+    </div>
+    <div class="btn-row">
+      <button class="opt-btn" id="btn-a" onclick="pick('aguda')">Aguda</button>
+      <button class="opt-btn" id="btn-l" onclick="pick('llana')">Llana</button>
+    </div>
+    <div class="feedback" id="fb"><span class="fb-icon">💡</span><span>Selecciona el tipo de palabra.</span></div>
+    <button class="next-btn" id="nxt" onclick="next()" style="display:none">Siguiente →</button>
+  `;
+}
+
+function pick(ans){
+  if(answered)return;
+  answered=true;
+  const item=order[idx];
+  const ok=ans===item.t;
+  const ba=document.getElementById('btn-a');
+  const bl=document.getElementById('btn-l');
+  ba.disabled=true;bl.disabled=true;
+  if(ok){correct++;streak++;}else{wrong++;streak=0;}
+  document.getElementById('sc-c').textContent=correct;
+  document.getElementById('sc-w').textContent=wrong;
+  document.getElementById('sc-s').textContent=streak;
+  if(item.t==='aguda'){
+    ba.className='opt-btn reveal';
+    if(ans==='llana')bl.className='opt-btn wrong';
+  } else {
+    bl.className='opt-btn reveal';
+    if(ans==='aguda')ba.className='opt-btn wrong';
+  }
+  if(ok){ans==='aguda'?ba.className='opt-btn correct':bl.className='opt-btn correct';}
+  const fb=document.getElementById('fb');
+  fb.className='feedback '+(ok?'ok':'bad');
+  fb.innerHTML='<span class="fb-icon">'+(ok?'✅':'❌')+'</span><span><strong>'+item.w+'</strong> es '+item.t+'. '+item.why+'</span>';
+  document.getElementById('nxt').style.display='block';
+}
+
+function next(){idx++;render();}
+
+function showEnd(){
+  const pct=Math.round(correct/order.length*100);
+  const msg=pct>=90?'¡Excelente! Dominas las palabras agudas y llanas.':pct>=70?'¡Muy bien! Sigue practicando un poco más.':'Repasa las reglas e inténtalo de nuevo.';
+  document.getElementById('prog').style.width='100%';
+  document.getElementById('quiz-area').innerHTML=`
+    <div class="end-card">
+      <div class="end-score">${correct}/${order.length}</div>
+      <div class="end-pct">${pct}% de aciertos</div>
+      <div class="end-msg">${msg}</div>
+      <button class="restart-btn" onclick="start()">Intentar de nuevo</button>
+    </div>
+  `;
+}
+
+start();
+</script>
+</body>
+</html>
